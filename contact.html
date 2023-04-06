@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>College Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3aa51f5923.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+</head>
+<body>
+    <section class="sub-header">
+        <nav>
+            <a href="index.html"><img src="Images/NMIMS Logo.png"></a>
+            <div class="nav-links">
+                <ul>
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About</a>
+                        <div class="sub-menu-1">
+                            <ul>
+                                <li><a href="">Mission</a></li>
+                                <li><a href="">Vision</a></li>
+                                <li><a href="">Belief</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li>
+                        <a href="course.html">Course</a>
+                    </li>
+                    <li>
+                        <a href="students.html">Students</a>
+                    </li>
+                    <li>
+                        <a href="faculty.html">Faculty</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+                    <li>
+                        <a href="angular.html">Angular</a>
+                    </li>
+                    <li>
+                        <a href="registration.html">Registration</a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+        <h1>Contact Us</h1>
+    </section>   
+    <section class="location">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15083.490238214832!2d73.075933!3d19.06934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c1fa2d330e2b%3A0xfb8df77eb24acba7!2sNMIMS%20Navi%20Mumbai!5e0!3m2!1sen!2sin!4v1675844081689!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+    <section class="contact-us">
+        <div class="row">
+            <div class="contact-col">
+                <div>
+                    <i class="fa fa-home"></i>
+                    <span>
+                        <h5>Sector-33, Pethpada, Kharghar</h5>
+                        <p>Navi Mumbai, Maharashtra</p>
+                    </span>
+                </div>
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <span>
+                        <h5>022-3547 6550</h5>
+                        <p>Monday to Saturday, 10am to 6pm</p>
+                    </span>
+                </div>
+                <div>
+                    <i class="fa fa-envelope-o"></i>
+                    <span>
+                        <h5>Hitesh.Gunjal@nmims.edu</h5>
+                        <p>Email us your query</p>
+                    </span>
+                </div>  
+            </div>
+            <div class="contact-col">
+                <form action="form_handler.php" method="post">
+                    <input type="text" name="name" placeholder="Enter your name" id="name" required>
+                    <input type="text" name="email" placeholder="Enter email address" id="email" required>
+                    <input type="text" name="subject" placeholder="Enter your subject" id="subject" required>
+                    <textarea rows="8" name="message" placeholder="message" id="message" required></textarea>
+                    <button type="submit" class="hero-btn red-btn">Send Message</button>
+                </form>
+                <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script>
+            function sendemail() {
+                Email.send({
+                    Host: "smtp.elasticemail.com",
+                    Username: "shree.shingre@gmail.com",
+                    Password: "92A42872F5EF5D8D6B1AA6B2BE892051AC61",
+                    To: 'shree.shingre386@nmims.edu.in',
+                    From: "shree.shingre@gmail.com",
+                    Subject: "this is subject",
+                    Body: "Name :",
+                }).then(
+                    message => alert("Message sent successfully")
+                );
+            }
+        </script>
+            </div>
+        </div>
+    </section> 
+  
+            <br>
+            <br>
+            <br>
+            
+           
+        </div>
+    </section> 
+    <section class="footer">
+        <h4>Our Socials</h4>
+        <div class="icons">
+            <a href="https://www.facebook.com/Nmims.navimumbai/">
+                <i class="fa fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/nmims.navimumbai/?hl=en">
+                <i class="fa fa-instagram"></i>
+            </a>
+            <a href="https://twitter.com/nmimsnavimumbai?lang=en">
+                <i class="fa fa-twitter"></i>
+            </a>
+            <a href="https://in.linkedin.com/school/nmims-navi-mumbai/">
+                <i class="fa fa-linkedin"></i>
+            </a>
+        </div>
+    </section>
+        
+</body>
+</html>

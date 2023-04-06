@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="formvalid.css">
+    <title>College Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3aa51f5923.js" crossorigin="anonymous"></script>
+    <script>
+        // Defining a function to display error message
+        function printError(elemId, hintMsg) {
+            document.getElementById(elemId).innerHTML = hintMsg;
+        }
+        
+        // Defining a function to validate form 
+        function validateForm() {
+            // Retrieving the values of form elements 
+            var fname = document.contactForm.fname.value;
+            var email = document.contactForm.email.value;
+            var mobno = document.contactForm.mobno.value;
+            var program = document.contactForm.program.value;
+            var gender = document.contactForm.gender.value;
+            var hobbies = [];
+            var checkboxes = document.getElementsByName("hobbies[]");
+            for(var i=0; i < checkboxes.length; i++) {
+                if(checkboxes[i].checked) {
+                    // Populate hobbies array with selected values
+                    hobbies.push(checkboxes[i].value);
+                }
+            }
+            
+            // Defining error variables with a default value
+            var nameErr = emailErr = mobileErr = programErr = genderErr = true;
+            
+            // Validate name
+            if(fname == "") {
+                printError("nameErr", "Please enter your name");
+            } else {
+                var regex = /^[a-zA-Z\s]+$/;                
+                if(regex.test(fname) === false) {
+                    printError("nameErr", "Please enter a valid name");
+                } else {
+                    printError("nameErr", "");
+                    nameErr = false;
+                }
+            }
+            
+            // Validate email address
+            if(email == "") {
+                printError("emailErr", "Please enter your email address");
+            } else {
+                // Regular expression for basic email validation
+                var regex = /^\S+@\S+\.\S+$/;
+                if(regex.test(email) === false) {
+                    printError("emailErr", "Please enter a valid email address");
+                } else{
+                    printError("emailErr", "");
+                    emailErr = false;
+                }
+            }
+            
+            // Validate mobile number
+            if(mobno == "") {
+                printError("mobileErr", "Please enter your mobile number");
+            } else {
+                var regex = /^[1-9]\d{9}$/;
+                if(regex.test(mobno) === false) {
+                    printError("mobileErr", "Please enter a valid 10 digit mobile number");
+                } else{
+                    printError("mobileErr", "");
+                    mobileErr = false;
+                }
+            }
+            
+            // Validate program
+            if(program == "Select") {
+                printError("programErr", "Please select your program");
+            } else {
+                printError("programErr", "");
+                programErr = false;
+            }
+            
+            // Validate gender
+            if(gender == "") {
+                printError("genderErr", "Please select your gender");
+            } else {
+                printError("genderErr", "");
+                genderErr = false;
+            }
+
+             // Validate password
+             if(password == "") {
+                printError("nameErr", "Please enter your name");
+            } else {
+                var regex = /^[a-zA-Z\s]+$/;                
+                if(regex.test(password) === false) {
+                    printError("passErr", "Please enter a valid password");
+                } else {
+                    printError("passErr", "");
+                    nameErr = false;
+                }
+            }
+            
+            // Prevent the form from being submitted if there are any errors
+            if((nameErr || emailErr || mobileErr || programErr || genderErr || passErr) == true) {
+               return false;
+            } else {
+                // Creating a string from input data for preview
+                var dataPreview = "You've entered the following details: \n" +
+                                  "Full Name: " + fname + "\n" +
+                                  "Email Address: " + email + "\n" +
+                                  "Mobile Number: " + mobno + "\n" +
+                                  "Program: " + program + "\n" +
+                                  "Gender: " + gender + "\n";
+                if(hobbies.length) {
+                    dataPreview += "Hobbies: " + hobbies.join(", ");
+                }
+                // Display input data in a dialog box before submitting the form
+                alert(dataPreview);
+            }
+        };
+        </script>
+        <script>
+            function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+        </script>
+        
+
+</head>
+<body>
+    <section class="sub-header">
+        <nav>
+            <a href="index.html"><img src="Images/NMIMS Logo.png"></a>
+            <div class="nav-links">
+                <ul>
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About</a>
+                        <div class="sub-menu-1">
+                            <ul>
+                                <li><a href="">Mission</a></li>
+                                <li><a href="">Vision</a></li>
+                                <li><a href="">Belief</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li>
+                        <a href="course.html">Course</a>
+                    </li>
+                    <li>
+                        <a href="students.html">Students</a>
+                    </li>
+                    <li>
+                        <a href="faculty.html">Faculty</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+                    <li>
+                        <a href="angular.html">Angular</a>
+                    </li>
+                    <li>
+                        <a href="registration.html">Registration</a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+        <h1>Registration</h1>
+    </section>
+        <form name="contactForm" onsubmit="return validateForm()" method="post" action="registration.php">
+            <h2 id="rf">Registration Form</h2>
+            <div class="row">
+                <label>Full Name</label>
+                <input type="text" name="fname" id="fname" >
+            </div>
+            
+            <div class="error" id="nameErr"></div>
+            <div class="row">
+                <label>Email Address</label>
+                <input type="text" name="email" id="email">
+            </div>
+            
+            <div class="error" id="emailErr"></div>
+            
+            <div class="row">
+                <label>Password</label>
+                <input type="text" name="password" id="password" >
+            </div>
+            
+            <div class="error" id="passErr"></div>
+
+            <div class="row">
+                <label>Mobile Number</label>
+                <input type="text" name="mobno" id="mobno" maxlength="10">
+            </div>
+            <div class="error" id="mobileErr"></div>
+            <div class="row">
+                <label>Program</label>
+                <select name="program" id="program">
+                    <option>Select</option>
+                    <option>Btech Computer Engineering</option>
+                    <option>Btech AI&DS</option>
+                    <option>Btech + Mbatech</option>
+                </select>
+
+                <br>
+            </div>
+            
+                <div class="error" id="programErr"></div>
+            <div class="row">
+                <label>Gender</label>
+                <div class="form-inline">
+                    <label><input type="radio" name="gender" value="male"> Male</label>
+                    <label><input type="radio" name="gender" value="female"> Female</label>
+                    <label><input type="radio" name="gender" value="other"> Other</label>
+                </div>
+                <br>
+            </div>
+            <br>
+                <div class="error" id="genderErr"></div>
+
+            <div class="row">
+                <input type="submit" value="Submit" name="save">
+            </div>
+            <button class="open-button" onclick="openForm()">Open Form</button>
+        </form>
+            
+<style>
+    {box-sizing: border-box;}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position:absolute;
+  right: 39%;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+</style>
+
+<div class="form-popup" id="myForm">
+  <form action="registration_data.php" class="form-container" action="post">
+    <h1>Login</h1>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <button type="submit" class="btn"  name="login">Login</button>
+    <button type="button" class="btn cancel" >Close</button>
+  </form>
+</div>
+           
+<script>
+    document.getElementById("login-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    if (username === "shansneh" && password === "0109") {
+    window.location.href = "registration_data.php";
+    } else {
+    alert("Incorrect username or password!");
+    }
+    });
+    </script>         
+          
+
+        
+    <section class="footer">
+        <h4>Our Socials</h4>
+        <div class="icons">
+            <a href="https://www.facebook.com/Nmims.navimumbai/">
+                <i class="fa fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/nmims.navimumbai/?hl=en">
+                <i class="fa fa-instagram"></i>
+            </a>
+            <a href="https://twitter.com/nmimsnavimumbai?lang=en">
+                <i class="fa fa-twitter"></i>
+            </a>
+            <a href="https://in.linkedin.com/school/nmims-navi-mumbai/">
+                <i class="fa fa-linkedin"></i>
+            </a>
+        </div>
+    </section>
+        
+</body>
+</html>
